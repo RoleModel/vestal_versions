@@ -11,7 +11,7 @@ module VestalVersions
     belongs_to :versioned, :polymorphic => true
 
     if ActiveRecord::VERSION::MAJOR == 3
-      attr_accessible :modifications, :number, :user, :tag, :reverted_from
+      attr_accessible :modifications, :number, :user, :version_tag, :reverted_from
     end
 
     # ActiveRecord::Base#changes is an existing method, so before serializing the +changes+ column,
@@ -59,7 +59,7 @@ module VestalVersions
     end
     
     def restore
-      if tag == 'deleted'
+      if version_tag == 'deleted'
         attrs = modifications
 
         class_name = attrs['type'].blank? ? versioned_type : attrs['type']
@@ -76,7 +76,7 @@ module VestalVersions
 
         model
       else
-        latest_version = self.class.where(:versioned_id => versioned_id, :versioned_type => versioned_type, :tag => 'deleted').first
+        latest_version = self.class.where(:versioned_id => versioned_id, :versioned_type => versioned_type, :version_tag => 'deleted').first
         latest_version.nil? ? nil : latest_version.restore
       end
     end

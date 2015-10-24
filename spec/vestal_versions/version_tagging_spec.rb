@@ -8,13 +8,13 @@ describe VestalVersions::VersionTagging do
   end
 
   context 'an untagged version' do
-    it "updates the version record's tag column" do
+    it "updates the version record's version_tag column" do
       tag_name = 'TAG'
       last_version = user.versions.last
 
-      last_version.tag.should_not == tag_name
+      last_version.version_tag.should_not == tag_name
       user.tag_version(tag_name)
-      last_version.reload.tag.should == tag_name
+      last_version.reload.version_tag.should == tag_name
     end
 
     it 'creates a version record for an initial version' do

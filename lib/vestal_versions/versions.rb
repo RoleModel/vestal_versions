@@ -66,7 +66,7 @@ module VestalVersions
       case value
         when Date, Time then where("#{table_name}.created_at <= ?", value.to_time).last
         when Numeric then find_by_number(value.floor)
-        when String then find_by_tag(value)
+        when String then find_by_version_tag(value)
         when Symbol then respond_to?(value) ? send(value) : nil
         when Version then value
       end
