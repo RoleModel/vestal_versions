@@ -1,3 +1,7 @@
+# 2.1.0 / 2016-04-23
+
+* [ENHANCEMENT] Rails 4 compatibility
+
 # 2.0.0 / 2014-01-20
 
  * [ENHANCEMENT] Ruby 2.1.0 compatibility
