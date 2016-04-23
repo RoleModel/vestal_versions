@@ -26,6 +26,7 @@ module VestalVersions
     # In conjunction with the included Comparable module, allows comparison of version records
     # based on their corresponding version numbers, creation timestamps and IDs.
     def <=>(other)
+      return nil unless other.is_a?(Version)
       [number, created_at, id].map(&:to_i) <=> [other.number, other.created_at, other.id].map(&:to_i)
     end
 
