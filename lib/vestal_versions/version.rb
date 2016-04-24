@@ -1,6 +1,5 @@
 require 'active_record'
 require 'active_support/configurable'
-require 'protected_attributes'
 
 module VestalVersions
   # The ActiveRecord model representing versions.
